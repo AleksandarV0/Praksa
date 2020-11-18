@@ -59,10 +59,10 @@ const ProjectDetails = () => {
 				</ul>
 				<div className='buttons'>
 					<div className='inner'>
-						<a href='javascript:;' className='btn green'>
+						<a href='/' className='btn green'>
 							Save
 						</a>
-						<a href='javascript:;' className='btn red'>
+						<a href='/' className='btn red'>
 							Delete
 						</a>
 					</div>

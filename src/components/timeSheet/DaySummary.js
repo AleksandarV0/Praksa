@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const DaySummary = () => {
 	return (
 		<>
@@ -7,9 +9,9 @@ const DaySummary = () => {
 				<span>30.</span>
 			</div>
 			<div className='hours'>
-				<a href='days.html'>
+				<Link to='/days/5'>
 					Hours: <span>7.5</span>
-				</a>
+				</Link>
 			</div>
 		</>
 	);

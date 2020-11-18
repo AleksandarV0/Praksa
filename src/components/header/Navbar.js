@@ -1,38 +1,62 @@
 import React from 'react';
 
+import { useLocation, Link } from 'react-router-dom';
+
 const Navbar = () => {
+	const currentLocation = useLocation();
+
+	const applyActiveClassToTab = (path) => {
+		return currentLocation.pathname === path ? 'btn nav active' : 'btn nav';
+	};
+
+	const applyActiveClassToMainPage = () => {
+		if (
+			currentLocation.pathname.includes('/days') ||
+			currentLocation.pathname === '/index'
+		) {
+			return 'btn nav active';
+		} else {
+			return 'btn nav';
+		}
+	};
+
 	return (
 		<nav>
 			<ul className='menu'>
 				<li>
-					<a href='index.html' className='btn nav active'>
+					<Link to='/index' className={applyActiveClassToMainPage()}>
 						TimeSheet
-					</a>
+					</Link>
 				</li>
+
 				<li>
-					<a href='clients.html' className='btn nav'>
+					<Link to='/clients' className={applyActiveClassToTab('/clients')}>
 						Clients
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href='projects.html' className='btn nav'>
+					<Link to='/projects' className={applyActiveClassToTab('/projects')}>
 						Projects
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href='categories.html' className='btn nav'>
+					<Link
+						to='/categories'
+						className={applyActiveClassToTab('/categories')}>
 						Categories
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href='team-members.html' className='btn nav'>
+					<Link
+						to='/team-members'
+						className={applyActiveClassToTab('/team-members')}>
 						Team members
-					</a>
+					</Link>
 				</li>
 				<li className='last'>
-					<a href='reports.html' className='btn nav'>
+					<Link to='/reports' className={applyActiveClassToTab('/reports')}>
 						Reports
-					</a>
+					</Link>
 				</li>
 			</ul>
 			<div className='mobile-menu'>
@@ -41,22 +65,38 @@ const Navbar = () => {
 				</a>
 				<ul>
 					<li>
-						<a href='/'>TimeSheet</a>
+						<Link to='/index' className={applyActiveClassToTab('/index')}>
+							TimeSheet
+						</Link>
 					</li>
 					<li>
-						<a href='/'>Clients</a>
+						<Link to='/clients' className={applyActiveClassToTab('/clients')}>
+							Clients
+						</Link>
 					</li>
 					<li>
-						<a href='/'>Projects</a>
+						<Link to='/projects' className={applyActiveClassToTab('/projects')}>
+							Projects
+						</Link>
 					</li>
 					<li>
-						<a href='/'>Categories</a>
+						<Link
+							to='/categories'
+							className={applyActiveClassToTab('/categories')}>
+							Categories
+						</Link>
 					</li>
 					<li>
-						<a href='/'>Team members</a>
+						<Link
+							to='/team-members'
+							className={applyActiveClassToTab('/team-members')}>
+							Team members
+						</Link>
 					</li>
 					<li className='last'>
-						<a href='/'>Reports</a>
+						<Link to='/reports' className={applyActiveClassToTab('/reports')}>
+							Reports
+						</Link>
 					</li>
 				</ul>
 			</div>
