@@ -11,11 +11,15 @@ import ProjectsOverview from './components/projects/ProjectsOverview';
 import CategoriesOverview from './components/categories/CategoriesOverview';
 import TeamMembersOverview from './components/teamMembers/TeamMembersOverview';
 import ReportsOverview from './components/reports/ReportsOverview';
+import Blank from './components/blank/Blank';
+import ForgotPassword from './components/forgotPassword/ForgotPassword';
+import Login from './components/login/Login';
 
 function App() {
 	return (
 		<div className='App container'>
 			<Header />
+
 			{/* <TimeSheet /> */}
 			{/* <DayOverview /> */}
 			{/* <ClientsOverview /> */}
@@ -23,6 +27,10 @@ function App() {
 			{/* <CategoriesOverview /> */}
 			{/* <TeamMembersOverview /> */}
 			<ReportsOverview />
+			{/* <Blank /> */}
+			{/* <ForgotPassword /> */}
+			{/* <Login /> */}
+
 			<Footer />
 		</div>
 	);
