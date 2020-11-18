@@ -7,6 +7,10 @@ import '../src/assets/css/style.css';
 import TimeSheet from './components/timeSheet/TimeSheet';
 import DayOverview from './components/days/DayOverview';
 import ClientsOverview from './components/clients/ClientsOverview';
+import ProjectsOverview from './components/projects/ProjectsOverview';
+import CategoriesOverview from './components/categories/CategoriesOverview';
+import TeamMembersOverview from './components/teamMembers/TeamMembersOverview';
+import ReportsOverview from './components/reports/ReportsOverview';
 
 function App() {
 	return (
@@ -15,6 +19,10 @@ function App() {
 			{/* <TimeSheet /> */}
 			{/* <DayOverview /> */}
 			{/* <ClientsOverview /> */}
+			{/* <ProjectsOverview /> */}
+			{/* <CategoriesOverview /> */}
+			{/* <TeamMembersOverview /> */}
+			<ReportsOverview />
 			<Footer />
 		</div>
 	);
