@@ -2301,8 +2301,8 @@ select.error {
 }
 #fancybox-close {
 	position: absolute;
-	top: -15px;
-	right: -15px;
+	top: 0px;
+	right: 0px;
 	width: 30px;
 	height: 30px;
 	background: transparent url('../img/fancybox/fancybox.png') -40px 0px;

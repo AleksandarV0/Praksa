@@ -1,40 +1,19 @@
 import React from 'react';
 
-import MobileMenu from './MobileMenu';
 import { NavLink, useLocation } from 'react-router-dom';
 
-const Navbar = () => {
-	const currentLocation = useLocation();
-	const isDaySelectedInTimeSheet = () => {
-		if (currentLocation.pathname.includes('/days')) {
-			return (
-				<li>
-					<NavLink to='/index' className='btn nav active'>
-						TimeSheet
-					</NavLink>
-				</li>
-			);
-		} else {
-			return (
-				<li>
-					<NavLink to='/index' className='btn nav'>
-						TimeSheet
-					</NavLink>
-				</li>
-			);
-		}
-	};
-
+function MobileMenu() {
 	return (
-		<nav>
-			<ul className='menu'>
-				{isDaySelectedInTimeSheet()}
-				{/* <li>
+		<div className='mobile-menu'>
+			<a href='/' className='menu-btn'>
+				<i className='zmdi zmdi-menu'></i>
+			</a>
+			<ul>
+				<li>
 					<NavLink to='/index' className='btn nav'>
 						TimeSheet
 					</NavLink>
-				</li> */}
-
+				</li>
 				<li>
 					<NavLink to='/clients' className='btn nav'>
 						Clients
@@ -61,11 +40,8 @@ const Navbar = () => {
 					</NavLink>
 				</li>
 			</ul>
-			<MobileMenu />
-
-			<span className='line'></span>
-		</nav>
+		</div>
 	);
-};
+}
 
-export default Navbar;
+export default MobileMenu;

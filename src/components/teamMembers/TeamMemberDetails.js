@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styles/CommonStyles.css';
+
 const TeamMemberDetails = () => {
 	return (
 		<div className='item'>
@@ -33,34 +35,58 @@ const TeamMemberDetails = () => {
 						<label>Status:</label>
 						<span className='radio'>
 							<label for='inactive'>Inactive:</label>
-							<input type='radio' value='1' name='status' id='inactive' />
+							<input
+								type='radio'
+								value='1'
+								name='status'
+								id='inactive'
+								className='margin-left'
+							/>
 						</span>
 						<span className='radio'>
 							<label for='active'>Active:</label>
-							<input type='radio' value='2' name='status' id='active' />
+							<input
+								type='radio'
+								value='2'
+								name='status'
+								id='active'
+								className='margin-left'
+							/>
 						</span>
 					</li>
 					<li>
 						<label>Role:</label>
 						<span className='radio'>
 							<label for='admin'>Admin:</label>
-							<input type='radio' value='1' name='status' id='admin' />
+							<input
+								type='radio'
+								value='1'
+								name='status'
+								id='admin'
+								className='margin-left'
+							/>
 						</span>
 						<span className='radio'>
 							<label for='worker'>Worker:</label>
-							<input type='radio' value='2' name='status' id='worker' />
+							<input
+								type='radio'
+								value='2'
+								name='status'
+								id='worker'
+								className='margin-left'
+							/>
 						</span>
 					</li>
 				</ul>
 				<div className='buttons'>
 					<div className='inner'>
-						<a href='/' className='btn green'>
+						<a href='/' className='btn green '>
 							Save
 						</a>
-						<a href='/' className='btn red'>
+						<a href='/' className='btn red margin-left'>
 							Delete
 						</a>
-						<a href='/' className='btn orange'>
+						<a href='/' className='btn orange margin-left'>
 							Reset Password
 						</a>
 					</div>

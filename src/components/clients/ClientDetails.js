@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styles/CommonStyles.css';
+
 const ClientDetails = () => {
 	return (
 		<div className='item'>
@@ -38,7 +40,7 @@ const ClientDetails = () => {
 				</ul>
 				<div className='buttons'>
 					<div className='inner'>
-						<a href='/' className='btn green'>
+						<a href='/' className='btn green margin-right'>
 							Save
 						</a>
 						<a href='/' className='btn red'>

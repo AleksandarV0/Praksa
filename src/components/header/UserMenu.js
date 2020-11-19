@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 
 const UserMenu = () => {
+	const [isMenuHovered, setIsMenuHovered] = useState(false);
+
 	return (
 		<ul className='user right'>
-			<li>
-				<a href='/'>Sladjana Miljanovic</a>
-				<div className='invisible'></div>
-				<div className='user-menu'>
+			<li onMouseLeave={() => setIsMenuHovered(false)}>
+				<a href='/' onMouseOver={() => setIsMenuHovered(true)}>
+					Sladjana Miljanovic
+				</a>
+				<div
+					className='invisible'
+					style={{ display: isMenuHovered ? 'block' : 'none' }}></div>
+				<div
+					className='user-menu'
+					style={{ display: isMenuHovered ? 'block' : 'none' }}
+					onMouseOver={() => setIsMenuHovered(true)}>
 					<ul>
 						<li>
 							<a href='/' className='link'>
