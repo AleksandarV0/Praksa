@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import ClientDetails from './ClientDetails';
 import $ from 'jquery';
 

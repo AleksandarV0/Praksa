@@ -12,6 +12,7 @@ import CategoriesOverview from '../categories/CategoriesOverview';
 import TeamMembersOverview from '../teamMembers/TeamMembersOverview';
 import ReportsOverview from '../reports/ReportsOverview';
 import Blank from '../blank/Blank';
+import TimeSheet from '../timeSheet/TimeSheetOverview';
 
 function UserLayout() {
 	// layout
@@ -22,6 +23,7 @@ function UserLayout() {
 			<Switch>
 				<Route path='/' exact component={TimeSheetOverview} />
 				<Route path='/index' exact component={TimeSheetOverview} />
+				<Route path='/index/:date' component={TimeSheetOverview} />
 				<Route path='/days/:id' component={DayOverview} />
 				<Route path='/clients' exact component={ClientsOverview} />
 				<Route path='/projects' exact component={ProjectsOverview} />
