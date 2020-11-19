@@ -46,15 +46,15 @@ const ProjectDetails = () => {
 					<li className='inline'>
 						<label>Status:</label>
 						<span className='radio'>
-							<label for='inactive'>Active:</label>
+							<label htmlFor='inactive'>Active:</label>
 							<input type='radio' value='1' name='status' id='inactive' />
 						</span>
 						<span className='radio'>
-							<label for='active'>Inactive:</label>
+							<label htmlFor='active'>Inactive:</label>
 							<input type='radio' value='2' name='status' id='active' />
 						</span>
 						<span className='radio'>
-							<label for='active'>Archive:</label>
+							<label htmlFor='active'>Archive:</label>
 							<input type='radio' value='3' name='status' id='active' />
 						</span>
 					</li>

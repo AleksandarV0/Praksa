@@ -13,7 +13,7 @@ import TeamMembersOverview from '../teamMembers/TeamMembersOverview';
 import ReportsOverview from '../reports/ReportsOverview';
 import Blank from '../blank/Blank';
 
-function ClientContentWrapper() {
+function UserLayout() {
 	// layout
 	return (
 		<>
@@ -36,4 +36,4 @@ function ClientContentWrapper() {
 	);
 }
 
-export default ClientContentWrapper;
+export default UserLayout;

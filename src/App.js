@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import ReportsOverview from './components/reports/ReportsOverview';
 import ForgotPassword from './components/forgotPassword/ForgotPassword';
 import Login from './components/login/Login';
-import ClientContentWrapper from './components/clientContentWrapper/ClientContentWrapper';
+import UserLayout from './components/userLayout/UserLayout';
 
 import '../src/assets/css/style.css';
 
@@ -24,7 +24,7 @@ function App() {
 				<Switch>
 					<Route path='/login' exact component={Login} />
 					<Route path='/forgot-pass' exact component={ForgotPassword} />
-					<Route path='/' component={ClientContentWrapper} />
+					<Route path='/' component={UserLayout} />
 				</Switch>
 			</div>
 		</Router>

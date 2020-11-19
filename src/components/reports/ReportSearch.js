@@ -1,6 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 function ReportSearch() {
+	const [startDate, setStartDate] = useState('');
+	const [endDate, setEndDate] = useState('');
+
+	const DateStartInput = ({ value, onClick }) => {
+		return (
+			<input
+				type='text'
+				className='in-text datepicker'
+				value={value}
+				onClick={onClick}
+				style={{ width: '119%' }}
+			/>
+		);
+	};
+
+	const DateEndInput = ({ value, onClick }) => {
+		return (
+			<input
+				type='text'
+				className='in-text datepicker'
+				value={value}
+				onClick={onClick}
+				style={{ width: '119%' }}
+			/>
+		);
+	};
+
 	return (
 		<div className='grey-box-wrap reports'>
 			<ul className='form'>
@@ -26,7 +57,11 @@ function ReportSearch() {
 				</li>
 				<li>
 					<label>Start date:</label>
-					<input type='text' className='in-text datepicker' />
+					<DatePicker
+						selected={startDate}
+						onChange={(date) => setStartDate(date)}
+						customInput={<DateStartInput />}
+					/>
 				</li>
 			</ul>
 			<ul className='form last'>
@@ -38,7 +73,11 @@ function ReportSearch() {
 				</li>
 				<li>
 					<label>End date:</label>
-					<input type='text' className='in-text datepicker' />
+					<DatePicker
+						selected={endDate}
+						onChange={(date) => setEndDate(date)}
+						customInput={<DateEndInput />}
+					/>
 				</li>
 				<li>
 					<a href='/' className='btn orange right'>
