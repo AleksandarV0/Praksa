@@ -62,7 +62,6 @@ const MonthSummary = ({ currentDate }) => {
 								currentMonthDayNumbers,
 								previousMonthDayNumbers
 							)}
-							currentDate={currentDate}
 							dayWorkingHours='7.5'
 							key={1 + Math.random(1, 14) * 99}
 						/>
@@ -73,25 +72,32 @@ const MonthSummary = ({ currentDate }) => {
 	};
 
 	const prepareDateStart = (
+		// TODO PREGLEDAJ, GRANICNI SLUCAJEVI SU ZEZNUTI
 		currentMonthDayNumbers,
 		previousMonthDayNumbers
 	) => {
 		if (doPrintPreviousDates) {
 			if (dateCounter + 1 > previousMonthDayNumbers) {
+				// BEFORE
 				dateCounter = 1;
 				doPrintPreviousDates = false;
-				return `${currentDate.year}-${currentDate.month}-${dateCounter}`;
-			} else {
-				dateCounter += 1;
-				return `${currentDate.year}-${currentDate.month - 1}-${dateCounter}`;
-			}
-		} else {
-			if (dateCounter + 1 > currentMonthDayNumbers) {
-				dateCounter = 1;
 				return `${currentDate.year}-${currentDate.month + 1}-${dateCounter}`;
 			} else {
 				dateCounter += 1;
 				return `${currentDate.year}-${currentDate.month}-${dateCounter}`;
+			}
+		} else {
+			if (dateCounter + 1 > currentMonthDayNumbers) {
+				// AFTER
+				dateCounter = 1;
+				return `${
+					currentDate.month + 1 > 11 ? currentDate.year + 1 : currentDate.year
+				}-${
+					currentDate.month + 2 > 11 ? '1' : currentDate.month + 2
+				}-${dateCounter}`;
+			} else {
+				dateCounter += 1;
+				return `${currentDate.year}-${currentDate.month + 1}-${dateCounter}`;
 			}
 		}
 	};
