@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
 const MonthSelector = ({ currentDate, setCurrentDate }) => {
 	const history = useHistory();
-
 	const MonthNames = [
 		'January',
 		'February',
@@ -22,10 +22,12 @@ const MonthSelector = ({ currentDate, setCurrentDate }) => {
 	const goToPreviousMonth = (e) => {
 		e.preventDefault();
 		if (currentDate.month - 1 < 0) {
-			history.push(`/index/${currentDate.year - 1}-12`);
+			history.push(`/timesheet/${currentDate.year - 1}-12`);
 			setCurrentDate({ year: currentDate.year - 1, month: 11 });
 		} else {
-			history.push(`/index/${currentDate.year}-${currentDate.month + 1 - 1}`);
+			history.push(
+				`/timesheet/${currentDate.year}-${currentDate.month + 1 - 1}`
+			);
 			setCurrentDate({ ...currentDate, month: currentDate.month - 1 });
 		}
 	};
@@ -33,10 +35,12 @@ const MonthSelector = ({ currentDate, setCurrentDate }) => {
 	const goToNextMonth = (e) => {
 		e.preventDefault();
 		if (currentDate.month + 1 > 11) {
-			history.push(`/index/${currentDate.year + 1}-1`);
+			history.push(`/timesheet/${currentDate.year + 1}-1`);
 			setCurrentDate({ year: currentDate.year + 1, month: 0 });
 		} else {
-			history.push(`/index/${currentDate.year}-${currentDate.month + 1 + 1}`);
+			history.push(
+				`/timesheet/${currentDate.year}-${currentDate.month + 1 + 1}`
+			);
 			setCurrentDate({ ...currentDate, month: currentDate.month + 1 });
 		}
 	};
@@ -48,7 +52,11 @@ const MonthSelector = ({ currentDate, setCurrentDate }) => {
 					<i className='zmdi zmdi-chevron-left'></i>previous month
 				</a>
 				<span className='center'>
-					{MonthNames[currentDate.month] + ', ' + currentDate.year}
+					{/* {MonthNames[currentDate.month] + ', ' + currentDate.year} */}
+					{moment(
+						`${currentDate.year}${currentDate.month + 1}`,
+						'YYYYMM'
+					).format('MMMM, YYYY')}
 				</span>
 
 				<a href='/' onClick={goToNextMonth} className='next'>

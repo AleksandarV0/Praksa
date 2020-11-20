@@ -9,7 +9,7 @@ const Navbar = () => {
 		if (currentLocation.pathname.includes('/days')) {
 			return (
 				<li>
-					<NavLink to='/index' className='btn nav active'>
+					<NavLink to='/timesheet' className='btn nav active'>
 						TimeSheet
 					</NavLink>
 				</li>
@@ -17,7 +17,7 @@ const Navbar = () => {
 		} else {
 			return (
 				<li>
-					<NavLink to='/index' className='btn nav'>
+					<NavLink to='/timesheet' className='btn nav'>
 						TimeSheet
 					</NavLink>
 				</li>
@@ -30,7 +30,7 @@ const Navbar = () => {
 			<ul className='menu'>
 				{isDaySelectedInTimeSheet()}
 				{/* <li>
-					<NavLink to='/index' className='btn nav'>
+					<NavLink to='/timesheet' className='btn nav'>
 						TimeSheet
 					</NavLink>
 				</li> */}

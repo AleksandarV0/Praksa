@@ -22,8 +22,8 @@ function UserLayout() {
 
 			<Switch>
 				<Route path='/' exact component={TimeSheetOverview} />
-				<Route path='/index' exact component={TimeSheetOverview} />
-				<Route path='/index/:date' component={TimeSheetOverview} />
+				<Route path='/timesheet' exact component={TimeSheetOverview} />
+				<Route path='/timesheet/:date' component={TimeSheetOverview} />
 				<Route path='/days/:id' component={DayOverview} />
 				<Route path='/clients' exact component={ClientsOverview} />
 				<Route path='/projects' exact component={ProjectsOverview} />

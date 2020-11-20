@@ -2,15 +2,15 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-const DaySummary = () => {
+const DaySummary = ({ date, currentDate, dayWorkingHours }) => {
 	return (
 		<>
 			<div className='date'>
-				<span>30.</span>
+				<span>{date.split('-')[2]}.</span>
 			</div>
 			<div className='hours'>
 				<Link to='/days/5'>
-					Hours: <span>7.5</span>
+					Hours: <span>{dayWorkingHours}</span>
 				</Link>
 			</div>
 		</>
