@@ -11,6 +11,7 @@ const DayOfTheWeekSelector = ({ currentDate, setCurrentDate }) => {
 						currentDate={currentDate}
 						dayIndex={index}
 						setCurrentDate={setCurrentDate}
+						key={index}
 					/>
 				))}
 			</ul>

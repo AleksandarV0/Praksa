@@ -5,9 +5,8 @@ import DaySummary from './DaySummary';
 const MonthSummary = ({ currentDate }) => {
 	var dateCounter = 0;
 	var doPrintPreviousDates = false;
-	const firstDayOfSelectedMonth = new Date( // ! 4
-		`${currentDate.year}-${currentDate.month + 1}-1`
-	).getDay();
+	var doPrintRemaindDates = false;
+	var resetCounter = false;
 
 	// ! Leap year is if: divisible with 4 and not divisible with 100 but divisible with 400
 	const leapDayCalculatorOfYear = () => {
@@ -35,6 +34,9 @@ const MonthSummary = ({ currentDate }) => {
 	];
 
 	const renderujKalendar = () => {
+		const firstDayOfSelectedMonth = new Date( // ! 4
+			`${currentDate.year}-${currentDate.month + 1}-1`
+		).getDay();
 		const startDay = firstDayOfSelectedMonth - 1;
 		const previousMonthDayNumbers =
 			NumberOfDaysInMonth[
@@ -47,7 +49,7 @@ const MonthSummary = ({ currentDate }) => {
 			dateCounter = previousMonthDayNumbers - 6; // ! 6 zbog toga, jer dani idu 0-> nedelja, 1-> ponedeljak, a indexi tabele krecu od 0, te moramo da obrnemo nedelju da ona dobije index 6
 		}
 
-		if (startDay == 0) {
+		if (startDay === 0) {
 			doPrintPreviousDates = false;
 		} else {
 			doPrintPreviousDates = true;
@@ -78,22 +80,41 @@ const MonthSummary = ({ currentDate }) => {
 	) => {
 		if (doPrintPreviousDates) {
 			if (dateCounter + 1 > previousMonthDayNumbers) {
-				// BEFORE
 				dateCounter = 1;
 				doPrintPreviousDates = false;
 				return `${currentDate.year}-${currentDate.month + 1}-${dateCounter}`;
 			} else {
 				dateCounter += 1;
-				return `${currentDate.year}-${currentDate.month}-${dateCounter}`;
+				return `${
+					currentDate.month - 1 < 0 ? currentDate.year - 1 : currentDate.year
+				}-${
+					currentDate.month - 1 < 0 ? '12' : currentDate.month
+				}-${dateCounter}`;
 			}
 		} else {
-			if (dateCounter + 1 > currentMonthDayNumbers) {
-				// AFTER
+			if (dateCounter + 1 === currentMonthDayNumbers && !doPrintRemaindDates) {
+				dateCounter += 1;
+				doPrintRemaindDates = true;
+				resetCounter = true;
+				return `${currentDate.year}-${currentDate.month + 1}-${dateCounter}`;
+			} else if (
+				dateCounter + 1 > currentMonthDayNumbers &&
+				!doPrintRemaindDates
+			) {
 				dateCounter = 1;
+				resetCounter = false;
+				return `${currentDate.year}-${currentDate.month + 1}-${dateCounter}`;
+			} else if (doPrintRemaindDates) {
+				if (resetCounter) {
+					dateCounter = 1;
+					resetCounter = false;
+				} else {
+					dateCounter += 1;
+				}
 				return `${
 					currentDate.month + 1 > 11 ? currentDate.year + 1 : currentDate.year
 				}-${
-					currentDate.month + 2 > 11 ? '1' : currentDate.month + 2
+					currentDate.month + 1 > 11 ? '1' : currentDate.month + 2
 				}-${dateCounter}`;
 			} else {
 				dateCounter += 1;
@@ -104,7 +125,7 @@ const MonthSummary = ({ currentDate }) => {
 
 	return (
 		<div>
-			{console.log('First day> ', firstDayOfSelectedMonth)}
+			{console.log('Current Date > ', currentDate)}
 			<table className='month-table'>
 				<thead>
 					<tr className='head'>
