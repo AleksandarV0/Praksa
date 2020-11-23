@@ -125,7 +125,6 @@ const MonthSummary = ({ currentDate }) => {
 
 	return (
 		<div>
-			{console.log('Current Date > ', currentDate)}
 			<table className='month-table'>
 				<thead>
 					<tr className='head'>

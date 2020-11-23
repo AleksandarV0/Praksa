@@ -1,8 +1,10 @@
-export const FetchAllClients = () => {
-	const clientArray = [
+import { ACTION_TYPES } from '../actions/clientActions';
+
+const initialState = {
+	allClients: [
 		{
 			clientID: 1,
-			companyName: 'companyname1',
+			companyName: 'Crytek GmbH',
 			clientName: 'client name1',
 			address: 'address1',
 			city: 'city1',
@@ -11,7 +13,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 2,
-			companyName: 'companyname2',
+			companyName: 'Google',
 			clientName: 'client name2',
 			address: 'address2',
 			city: 'city2',
@@ -20,7 +22,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 3,
-			companyName: 'companyname3',
+			companyName: 'Facebook',
 			clientName: 'client name3',
 			address: 'address3',
 			city: 'city3',
@@ -29,7 +31,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 4,
-			companyName: 'companyname4',
+			companyName: 'Youtube',
 			clientName: 'client name4',
 			address: 'address4',
 			city: 'city4',
@@ -38,7 +40,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 5,
-			companyName: 'companyname5',
+			companyName: 'Continental',
 			clientName: 'client name5',
 			address: 'address5',
 			city: 'city5',
@@ -47,7 +49,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 6,
-			companyName: 'companyname6',
+			companyName: 'SoundCloud',
 			clientName: 'client name6',
 			address: 'address6',
 			city: 'city6',
@@ -56,7 +58,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 7,
-			companyName: 'companyname7',
+			companyName: 'CTN',
 			clientName: 'client name7',
 			address: 'address7',
 			city: 'city7',
@@ -65,7 +67,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 8,
-			companyName: 'companyname8',
+			companyName: 'Core8',
 			clientName: 'client name8',
 			address: 'address8',
 			city: 'city8',
@@ -74,7 +76,7 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 9,
-			companyName: 'companyname9',
+			companyName: 'Cnfinitum',
 			clientName: 'client name9',
 			address: 'address9',
 			city: 'city9',
@@ -83,14 +85,24 @@ export const FetchAllClients = () => {
 		},
 		{
 			clientID: 10,
-			companyName: 'companyname10',
+			companyName: 'Cordram',
 			clientName: 'client name10',
 			address: 'address10',
 			city: 'city10',
 			zipCode: 'zipcode10',
 			country: 'country10',
 		},
-	];
+	],
+};
 
-	return clientArray;
+export const clientReducer = (state = initialState, action) => {
+	switch (action.type) {
+		case ACTION_TYPES.FETCH_ALL:
+			return {
+				...state,
+				allClients: [...action.payload],
+			};
+		default:
+			return state;
+	}
 };

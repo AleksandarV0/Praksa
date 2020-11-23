@@ -10,7 +10,7 @@ const Header = () => {
 		<header className='header'>
 			<div className='top-bar'></div>
 			<div className='wrapper'>
-				<a href='index.html' className='logo'>
+				<a href='/timesheet' className='logo'>
 					<img src={logo} alt='VegaITSourcing Timesheet' />
 				</a>
 				<UserMenu />

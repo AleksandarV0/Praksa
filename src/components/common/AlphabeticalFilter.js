@@ -1,90 +1,108 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const AlphabeticalFilter = () => {
+import * as actions from '../../services/redux/actions/alphabetFilterActions';
+
+const AlphabeticalFilter = ({
+	currentLetter,
+	selectLetter,
+	clearLetter,
+	allLetters,
+}) => {
+	const latinAlphabet = [
+		'a',
+		'b',
+		'c',
+		'd',
+		'e',
+		'f',
+		'g',
+		'h',
+		'i',
+		'j',
+		'k',
+		'l',
+		'm',
+		'n',
+		'o',
+		'p',
+		'q',
+		'r',
+		's',
+		't',
+		'u',
+		'v',
+		'w',
+		'x',
+		'y',
+	];
+
+	useEffect(() => {
+		return () => {
+			clearLetter();
+		};
+	}, []);
+
+	const returnElementClass = (letter) => {
+		if (currentLetter === letter) {
+			return 'active';
+		}
+		if (!allLetters.includes(letter)) {
+			return 'disabled';
+		}
+
+		return '';
+	};
+
+	// ! active klasa za active element
+	// ? disabled klasa za element koji nema
 	return (
 		<div className='alpha'>
 			<ul>
-				<li>
-					<a href='/'>a</a>
-				</li>
-				<li>
-					<a href='/'>b</a>
-				</li>
-				<li>
-					<a href='/'>c</a>
-				</li>
-				<li>
-					<a href='/'>d</a>
-				</li>
-				<li>
-					<a href='/'>e</a>
-				</li>
-				<li className='active'>
-					<a href='/'>f</a>
-				</li>
-				<li>
-					<a href='/'>g</a>
-				</li>
-				<li>
-					<a href='/'>h</a>
-				</li>
-				<li>
-					<a href='/'>i</a>
-				</li>
-				<li>
-					<a href='/'>j</a>
-				</li>
-				<li>
-					<a href='/'>k</a>
-				</li>
-				<li>
-					<a href='/'>l</a>
-				</li>
-				<li className='disabled'>
-					<a href='/'>m</a>
-				</li>
-				<li>
-					<a href='/'>n</a>
-				</li>
-				<li>
-					<a href='/'>o</a>
-				</li>
-				<li>
-					<a href='/'>p</a>
-				</li>
-				<li>
-					<a href='/'>q</a>
-				</li>
-				<li>
-					<a href='/'>r</a>
-				</li>
-				<li>
-					<a href='/'>s</a>
-				</li>
-				<li>
-					<a href='/'>t</a>
-				</li>
-				<li>
-					<a href='/'>u</a>
-				</li>
-				<li>
-					<a href='/'>v</a>
-				</li>
-				<li>
-					<a href='/'>w</a>
-				</li>
-				<li>
-					<a href='/'>x</a>
-				</li>
-				<li>
-					<a href='/'>y</a>
-				</li>
-				<li className='last'>
-					<a href='/'>z</a>
+				{latinAlphabet.map((letter) => (
+					<li className={returnElementClass(letter)} key={letter}>
+						<Link
+							to='/clients'
+							onClick={() => {
+								if (currentLetter !== letter) {
+									selectLetter(letter);
+								} else {
+									clearLetter();
+								}
+							}}>
+							{letter}
+						</Link>
+					</li>
+				))}
+				<li className={currentLetter == 'z' ? 'last active' : 'last'}>
+					<Link
+						to='/clients'
+						onClick={() => {
+							if (currentLetter !== 'z') {
+								selectLetter('z');
+							} else {
+								clearLetter();
+							}
+						}}>
+						z
+					</Link>
 				</li>
 			</ul>
 		</div>
 	);
 };
 
-export default AlphabeticalFilter;
+const mapStateToProps = (state) => {
+	return {
+		currentLetter: state.alphabetFilterReducer.currentLetter,
+		allLetters: state.alphabetFilterReducer.allAvailableLetters,
+	};
+};
+
+const mapActionToProps = {
+	selectLetter: actions.selectLetter,
+	clearLetter: actions.clearLetter,
+};
+
+export default connect(mapStateToProps, mapActionToProps)(AlphabeticalFilter);
