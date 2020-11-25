@@ -8,3 +8,12 @@
 .user-inputs {
 	width: 100% !important;
 }
+
+.danger {
+	border-color: red !important;
+	/* border-width: medium !important; */
+}
+
+.full-width {
+	width: 100% !important;
+}

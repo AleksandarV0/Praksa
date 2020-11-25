@@ -11,14 +11,15 @@ const AllClients = ({
 	currentLetter,
 	setEntityToDisplayCount,
 	setAllLetters,
+	allCountries,
 }) => {
 	const [displayedClients, setDisplayedClients] = useState([]);
 
 	useEffect(() => {
 		var allLetters = [];
 		allClients.map((client) => {
-			if (!allLetters.includes(client.companyName.toLowerCase().charAt(0))) {
-				allLetters.push(client.companyName.toLowerCase().charAt(0));
+			if (!allLetters.includes(client.clientName.toLowerCase().charAt(0))) {
+				allLetters.push(client.clientName.toLowerCase().charAt(0));
 			}
 		});
 		setAllLetters(allLetters);
@@ -28,7 +29,7 @@ const AllClients = ({
 		var prepareClients = allClients.slice();
 		if (currentLetter !== '') {
 			prepareClients = prepareClients.filter((x) =>
-				x.companyName.toLowerCase().startsWith(currentLetter)
+				x.clientName.toLowerCase().startsWith(currentLetter)
 			);
 		}
 		setEntityToDisplayCount(prepareClients.length);
@@ -40,7 +41,11 @@ const AllClients = ({
 	return (
 		<div className='accordion-wrap clients'>
 			{displayedClients.map((client) => (
-				<ClientDetails key={client.clientID} client={client} />
+				<ClientDetails
+					key={client.clientID}
+					client={client}
+					allCountries={allCountries}
+				/>
 			))}
 		</div>
 	);
@@ -51,6 +56,7 @@ const mapStateToProps = (state) => {
 		allClients: state.clientReducer.allClients,
 		currentPage: state.paginationReducer.currentPage,
 		currentLetter: state.alphabetFilterReducer.currentLetter,
+		allCountries: state.countryListReducer.countryList,
 	};
 };
 

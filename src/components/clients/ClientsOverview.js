@@ -5,6 +5,7 @@ import Pagination from '../common/Pagination';
 import AlphabeticalFilter from '../common/AlphabeticalFilter';
 import ClientFunctions from './ClientFunctions';
 import AllClients from './AllClients';
+import { ToastProvider } from 'react-toast-notifications';
 
 const ClientsOverview = () => {
 	return (
@@ -13,10 +14,12 @@ const ClientsOverview = () => {
 				<h2>
 					<i className='ico clients'></i>Clients
 				</h2>
-				<ClientFunctions />
-				<AlphabeticalFilter />
-				<AllClients />
-				<Pagination />
+				<ToastProvider>
+					<ClientFunctions />
+					<AlphabeticalFilter />
+					<AllClients />
+					<Pagination />
+				</ToastProvider>
 			</section>
 		</div>
 	);

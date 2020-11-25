@@ -30,15 +30,14 @@ const Pagination = ({
 		<div className='pagination'>
 			<ul>
 				{allPages.map((pageNumber) => (
-					<li>
+					<li key={pageNumber}>
 						<Link
 							to='/clients'
 							onClick={() => {
-								if (currentPage != pageNumber) {
+								if (currentPage !== pageNumber) {
 									selectPage(pageNumber);
 								}
-							}}
-							key={pageNumber}>
+							}}>
 							{pageNumber}
 						</Link>
 					</li>

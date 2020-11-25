@@ -75,7 +75,7 @@ const AlphabeticalFilter = ({
 						</Link>
 					</li>
 				))}
-				<li className={currentLetter == 'z' ? 'last active' : 'last'}>
+				<li className={`last ${returnElementClass('z')}`}>
 					<Link
 						to='/clients'
 						onClick={() => {

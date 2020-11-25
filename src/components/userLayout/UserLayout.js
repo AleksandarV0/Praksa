@@ -12,7 +12,7 @@ import CategoriesOverview from '../categories/CategoriesOverview';
 import TeamMembersOverview from '../teamMembers/TeamMembersOverview';
 import ReportsOverview from '../reports/ReportsOverview';
 import Blank from '../blank/Blank';
-import TimeSheet from '../timeSheet/TimeSheetOverview';
+import { ToastProvider } from 'react-toast-notifications';
 
 function UserLayout() {
 	// layout

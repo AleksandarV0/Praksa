@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import $ from 'jquery';
 import '../styles/CommonStyles.css';
 
 const ProjectDetails = () => {
+	const [accordionOpened, setAccordionOpened] = useState(false);
+
+	useEffect(() => {
+		var heading = '.accordion-wrap .heading';
+		$(heading).click(function () {
+			if (!$(this).parent().hasClass('open')) {
+				$(this).next().slideDown('normal');
+			} else {
+				$(this).next().slideUp('normal');
+			}
+		});
+	}, []);
+
+	const toggleAccordian = () => {
+		setAccordionOpened(!accordionOpened);
+	};
+
 	return (
-		<div className='item'>
+		<div
+			className={accordionOpened === true ? 'item open' : 'item'}
+			onClick={toggleAccordian}>
 			<div className='heading'>
 				<span>BuzzMonitor</span>{' '}
 				<span>
